@@ -60,9 +60,11 @@ int main(int argc, char *argv[]) {
   cout << " -- file=\"" << ofile << "\"" << endl;
 
   // create data
+  int i;
   cout << "* [create data]" << endl;
   double *library=new double[L*dim];
-  for(int i=0;i<(L*dim);i++) {
+  #pragma omp parallel for
+  for(i=0;i<(L*dim);i++) {
     library[i]=((double)random())/((double)RAND_MAX)*norm;
     }
 
@@ -70,8 +72,8 @@ int main(int argc, char *argv[]) {
   cout << "* [write data]" << endl;
   ofstream fout;
   fout.open(ofile);
-  for(int i=0;i<(L*dim);i++) {
-    fout << i << " " << library[i] << endl;
+  for(i=0;i<(L*dim);i++) {
+    fout << setprecision(10) << scientific << i << " " << library[i] << endl;
     }
   fout.close();
 

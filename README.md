@@ -3,7 +3,7 @@
 Computes L*dim real random numbers in the interval [0,norm].
 
 * **Compilation**: ./compile.sh
-* **Usage**: ./mira mira.in
+* **Usage**: export OMP_NUM_THREADS=8; ./mira mira.in
 * **Output file**: mira.dat
 
 
